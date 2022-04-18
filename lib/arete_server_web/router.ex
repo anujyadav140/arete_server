@@ -12,6 +12,7 @@ defmodule AreteServerWeb.Router do
     get "/rooms", RoomController, :list
     # post "/messages/create", MessageController, :create
     get "/rooms/:id/chat", MessageController, :get
+    delete "/rooms/:id/delete", RoomController, :delete
   end
 
   # Enables LiveDashboard only for development

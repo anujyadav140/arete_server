@@ -26,6 +26,7 @@ defmodule AreteServerWeb.MessageController do
       end
     end
 
+    @spec get(Plug.Conn.t(), map) :: Plug.Conn.t()
     def get(conn, %{"id" => room_id}) do
       room = Chat.get_room(room_id)
       if room == nil do

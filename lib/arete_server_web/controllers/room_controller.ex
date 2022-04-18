@@ -28,4 +28,17 @@ defmodule AreteServerWeb.RoomController do
     conn
     |> render("ack.json", %{success: true, data: Chat.list_rooms()})
   end
+
+  def delete(conn, %{"id" => room_id}) do
+    # conn
+    # |> render("ack.json", %{success: true, message: "Room Deleted!"})
+
+    rooms = Chat.get_room(room_id)
+    if rooms == nil do
+      conn |> render("errors.json", %{errors: ["No room found!"]})
+    else
+      conn |> render("ack.json", %{success: true, data: Chat.deletes_room(room_id), message: "Room Deleted!"})
+    end
+  end
+
 end

@@ -88,8 +88,21 @@ defmodule AreteServer.Chat do
 
   """
   def delete_room(%Room{} = room) do
+    query =
+      from r in Room,
+      where: r.id == ^room
+
     Repo.delete(room)
   end
+
+  def deletes_room(room_id) do
+    query =
+      from r in Room,
+      where: r.id == ^room_id
+
+    Repo.delete_all(query)
+  end
+
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking room changes.
