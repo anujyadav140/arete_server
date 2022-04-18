@@ -88,10 +88,6 @@ defmodule AreteServer.Chat do
 
   """
   def delete_room(%Room{} = room) do
-    query =
-      from r in Room,
-      where: r.id == ^room
-
     Repo.delete(room)
   end
 
